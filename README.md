@@ -1,4 +1,4 @@
 # Kubernetes Local Services
 
 ## Supported Services
-- [PostgreSQL](./docs/postgresql.md)
+- [PostgreSQL](.github/docs/postgresql.md)
