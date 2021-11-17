@@ -9,3 +9,4 @@
 ## Supported Services
 
 - [PostgreSQL](.github/docs/postgresql.md)
+- [MySQL](.github/docs/mysql.md)
