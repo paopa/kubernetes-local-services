@@ -25,6 +25,8 @@ spec:
                 secretKeyRef:
                   key: password
                   name: pg-secret
+            - name: PGDATA # see this PR https://github.com/docker-library/postgres/issues/263 to know why we need this variable.
+              value: "/var/lib/postgresql/data/pgdata"
           volumeMounts:
             - mountPath: "/var/lib/postgresql/data"
               name: pg-storage
