@@ -33,5 +33,5 @@ spec:
       volumes:
         - name: pg-storage
           hostPath:
-            path: /tmp/local/postgresql
+            path: /var/local/postgresql
             type: DirectoryOrCreate

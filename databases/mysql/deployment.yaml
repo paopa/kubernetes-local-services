@@ -31,5 +31,5 @@ spec:
       volumes:
         - name: mysql-storage
           hostPath:
-            path: /tmp/local/mysql
+            path: /var/local/mysql
             type: DirectoryOrCreate
