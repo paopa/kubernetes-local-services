@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: kafka
+  name: kafka-deploy
+spec:
+  selector:
+    matchLabels:
+      ess: kafka-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        ess: kafka-app
+    spec:
+      containers:
+        - name: zookeeper
+          image: bitnami/zookeeper:3.7
+          ports:
+            - containerPort: 2181
+              name: zookeeper-port
+          volumeMounts:
+            - mountPath: "/bitnami/zookeeper"
+              name: zookeeper-storage
+          env:
+            - name: ALLOW_ANONYMOUS_LOGIN
+              value: "yes"
+        - name: kafka
+          image: bitnami/kafka:latest
+          ports:
+            - containerPort: 9092
+              name: kafka-port
+          volumeMounts:
+            - mountPath: "/bitnami/kafka"
+              name: kafka-storage
+          env:
+            - name: KAFKA_CFG_ZOOKEEPER_CONNECT
+              value: 127.0.0.1:2181
+            - name: ALLOW_PLAINTEXT_LISTENER
+              value: "yes"
+      volumes:
+        - name: kafka-storage
+          hostPath:
+            path: /var/local/kafka/cluster
+            type: DirectoryOrCreate
+        - name: zookeeper-storage
+          hostPath:
+            path: /var/local/kafka/zookeeper
+            type: DirectoryOrCreate
