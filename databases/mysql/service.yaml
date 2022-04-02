@@ -4,11 +4,10 @@ metadata:
   namespace: mysql
   name: mysql-svc
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 3306
       protocol: TCP
-      nodePort: 30306
       targetPort: mysql-port
   selector:
     db: mysql-app

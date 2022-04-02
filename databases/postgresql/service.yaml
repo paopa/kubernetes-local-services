@@ -4,11 +4,10 @@ metadata:
   name: pg-svc
   namespace: postgresql
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 5432
       protocol: TCP
-      nodePort: 30432
       targetPort: pg-port
   selector:
     db: pg-app
