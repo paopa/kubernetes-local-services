@@ -1,22 +1,20 @@
 use clap::Parser;
 
-/// Simple program to greet a person
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    /// Name of the person to greet
-    #[arg(short, long)]
-    name: String,
+    #[arg(short = 'n', long = "name", required = true)]
+    service_name: String,
 
-    /// Number of times to greet
-    #[arg(short, long, default_value_t = 1)]
-    count: u8,
+    #[arg(short = 't', long = "type", required = true)]
+    service_type: String,
 }
 
 fn main() {
     let args = Args::parse();
 
-    for _ in 0..args.count {
-        println!("Hello {}!", args.name)
-    }
+    println!("service_name: {}", args.service_name);
+    println!("service_type: {}", args.service_type);
+
+    return();
 }
