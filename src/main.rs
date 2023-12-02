@@ -2,14 +2,13 @@ use clap::Parser;
 
 #[derive(Parser, Debug)]
 #[command(
-    author = "paooap",
-    version = "0.0.1-beta",
-    // this one is working when you run wih -h
-    about = "TBD",     
-    // this one is working when you run with --help
-    long_about = "This is a tool for easy to create a service in kubernetes." 
+author = "paooap",
+version = "0.0.1-beta",
+// this one is working when you run wih -h
+about = "TBD",
+// this one is working when you run with --help
+long_about = "This is a tool for easy to create a service in kubernetes."
 )]
-
 struct Args {
     /// The name of the service
     #[arg(short = 'n', long, required = true)]
